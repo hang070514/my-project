@@ -2,8 +2,10 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <p>{{str}}</p>
-    <child1 :list="list" :obj="obj" @mFun="getMsg" :change="change"></child1>
-    <child2></child2>
+    <button @click="getMsgFromChild2">点我</button>
+    <child1 ref="child1" :list="list" :obj="obj" @mFun="getMsg" :change="change"></child1>
+    <child2 ref="child2"></child2>
+
   </div>
 </template>
 
@@ -28,12 +30,19 @@ export default {
       ]
     }
   },
+  created(){
+
+  },
   methods:{
     getMsg(res){
       this.str = res;
     },
     change(){
       this.str = 'str改变了';
+    },
+    getMsgFromChild2(){
+      console.log(this.$refs);
+      this.$refs.child1.sendToParent();
     }
   }
 }

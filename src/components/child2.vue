@@ -1,10 +1,11 @@
 <template>
     <div class="child2">
-        <h3>我是子组件child2</h3>
+        <h3>{{msg}}</h3>
         <p>下面是兄弟组件child1传过来的</p>
         <ul>
           <li v-for="item in list">{{item}}</li>
         </ul>
+        <p>通过this.$root获取父组件的数据</p>
     </div>
 </template>
 
@@ -14,11 +15,13 @@
         name: "child2",
         data(){
           return{
-            list:[]
+            list:[],
+            msg:'我是子组件child2'
           }
         },
         created(){
             this.receive();
+            //console.log('======',this.$root)
         },
         methods:{
           receive(){

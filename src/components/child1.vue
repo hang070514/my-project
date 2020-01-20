@@ -60,6 +60,7 @@
 
 <style scoped>
   .child1{
+    margin-top: 10px;
     border: 1px solid red;
   }
 </style>
